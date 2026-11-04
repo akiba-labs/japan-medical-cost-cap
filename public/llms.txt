@@ -1,0 +1,41 @@
+# Japan High-Cost Medical Expense Check (高額療養費)
+
+> Free, keyless calculator for Japan's high-cost medical expense benefit (高額療養費): monthly cap (自己負担限度額), what you really pay, refund, 4th-month 多数回 rate, the new Aug–Jul yearly cap (年間上限, from Aug 2026), the same bill under the Aug 2027 12-band schedule, and the 2-year claim deadline. English + Japanese. Rules as of 2026-11-04. Educational estimate, not medical, financial or legal advice; not affiliated with MHLW or any insurer; the insurer decides.
+
+Site: https://japan-medical-cost-cap.vercel.app
+
+## API (no key, CORS open, GET or POST JSON)
+
+- Check: https://japan-medical-cost-cap.vercel.app/api/check?month=2026-11&totalCost=1000000&standardMonthlyRemuneration=300000
+  → band y370, monthlyCap 92940 (85,800 + (1,000,000 − 286,000) × 1%), monthlyRefund 207060, from2027, beforeAug2026, annualCap 530000 (2026-08…2027-07), claim.deadline 2028-11-30
+- Yearly tracker: /api/check?band=y370&months=2026-08:300000,2026-09:300000,2026-10:300000,2026-11:300000 (month:10割 total[:outpatient]; prefix "copay" for copay amounts) — auto 多数回 from the 4th benefit month and the Aug–Jul annual cap
+- Rules: https://japan-medical-cost-cap.vercel.app/api/rules (full cap tables for all schedules, ages and bands)
+- OpenAPI: https://japan-medical-cost-cap.vercel.app/openapi.json
+- Plugin manifest: https://japan-medical-cost-cap.vercel.app/.well-known/ai-plugin.json
+- MCP: tool `japan_high_cost_medical_check` on https://free-agent-tools.vercel.app/mcp
+
+## Inputs
+
+- month: treatment month YYYY-MM (default this month, JST). Schedules: up to 2026-07 (pre), 2026-08…2027-07 (r8), 2027-08+ (r9)
+- totalCost (10割 total) or copay (counter payment, insured care); accepts 100万, ¥1,000,000, 1.5m
+- ageGroup: under70 | 70plus (or a number age)
+- income, one of: band (y1650, y1410, y1160, y1040, y950, y770, y650, y510, y370, y260, y200, y0, nontaxable, nontaxable_low; old ア/イ/ウ/エ/オ accepted), standardMonthlyRemuneration (標準報酬月額), nhiIncome (旧ただし書き所得), taxableIncome (70+ 課税所得), annualIncome (rough), nonTaxable=true
+- burdenRate 0.1/0.2/0.3, setting inpatient|outpatient (70+ outpatient cap), manyTimes, priorHitMonths, months
+
+## Key rules
+
+- Monthly cap = base + max(0, total − threshold) × 1%; flat for lower bands
+- Under 70, Aug 2026–Jul 2027: ¥11.6M+ 270,300+(x−901,000); ¥7.7M–11.6M 179,100+(x−597,000); ¥3.7M–7.7M 85,800+(x−286,000); ≤¥3.7M 61,500; tax exempt 36,900
+- From Aug 2027 bands split: e.g. ¥5.1M–6.5M 98,100+(x−327,000); ¥6.5M–7.7M 110,400+(x−368,000); ¥16.5M+ 342,000+(x−1,140,000)
+- Yearly cap (Aug–Jul, from Aug 2026 treatment): ¥1.68M / ¥1.11M / ¥530k / ¥410k (≤ ~¥2M) / ¥290k (tax exempt) / ¥180k (70+ 低所得I)
+- 70+ 一般 outpatient cap: ¥18,000 → ¥22,000 (Aug 2026) → ¥28,000 or ¥22,000 (Aug 2027); yearly ¥216,000
+- Meals, private rooms, 先進医療 and uninsured care don't count; under 70 only ¥21,000+ bills per facility combine
+- Claim within 2 years from the 1st of the month after treatment
+
+## Sources
+
+- MHLW 高額療養費: https://www.mhlw.go.jp/stf/seisakunitsuite/bunya/kenkou_iryou/iryouhoken/juuyou/kougakuiryou/index.html
+- MHLW review tables: https://www.mhlw.go.jp/content/12400000/001726232.pdf
+- 協会けんぽ: https://www.kyoukaikenpo.or.jp/g3/sb3030/r150/
+- Setagaya (annual cap): https://www.city.setagaya.lg.jp/02060/33049.html
+- Machida (claim deadline): https://www.city.machida.tokyo.jp/kurashi/hoken/kokuho/ironnakyuufu/kougaku.html

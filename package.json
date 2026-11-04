@@ -1,0 +1,31 @@
+{
+  "name": "japan-medical-cost-cap",
+  "version": "1.0.0",
+  "private": true,
+  "description": "Free Japan high-cost medical expense (高額療養費) calculator: monthly cap, refund, 多数回 rate, Aug–Jul yearly cap from 2026, the Aug 2027 band split and the 2-year claim deadline. Keyless JSON API + MCP.",
+  "license": "MIT",
+  "scripts": {
+    "dev": "next dev",
+    "build": "next build",
+    "start": "next start",
+    "lint": "eslint",
+    "test": "node --import tsx --test lib/cap.test.ts lib/api.test.ts lib/share.test.ts lib/mobile.test.ts"
+  },
+  "dependencies": {
+    "@vercel/analytics": "^2.0.1",
+    "next": "^16.3.5",
+    "react": "^19.2.8",
+    "react-dom": "^19.2.8"
+  },
+  "devDependencies": {
+    "@tailwindcss/postcss": "^4",
+    "@types/node": "^20",
+    "@types/react": "^19",
+    "@types/react-dom": "^19",
+    "eslint": "^9",
+    "eslint-config-next": "^16.3.5",
+    "tailwindcss": "^4",
+    "tsx": "^4.23.15",
+    "typescript": "^5"
+  }
+}
