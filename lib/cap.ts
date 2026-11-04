@@ -28,8 +28,8 @@ export const DISCLAIMER =
 
 export const SOURCES = [
   "https://www.mhlw.go.jp/stf/seisakunitsuite/bunya/kenkou_iryou/iryouhoken/juuyou/kougakuiryou/index.html",
-  "https://www.mhlw.go.jp/content/12400000/001726232.pdf",
-  "https://www.mhlw.go.jp/content/12400000/001729632.pdf",
+  "https://www.mhlw.go.jp/content/001726232.pdf",
+  "https://www.mhlw.go.jp/content/001729632.pdf",
   "https://www.kyoukaikenpo.or.jp/g3/sb3030/r150/",
   "https://www.city.setagaya.lg.jp/02060/33049.html",
   "https://www.city.machida.tokyo.jp/kurashi/hoken/kokuho/ironnakyuufu/kougaku.html",

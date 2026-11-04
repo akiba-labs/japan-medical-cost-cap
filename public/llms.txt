@@ -35,7 +35,7 @@ Site: https://japan-medical-cost-cap.vercel.app
 ## Sources
 
 - MHLW 高額療養費: https://www.mhlw.go.jp/stf/seisakunitsuite/bunya/kenkou_iryou/iryouhoken/juuyou/kougakuiryou/index.html
-- MHLW review tables: https://www.mhlw.go.jp/content/12400000/001726232.pdf
+- MHLW review tables: https://www.mhlw.go.jp/content/001726232.pdf
 - 協会けんぽ: https://www.kyoukaikenpo.or.jp/g3/sb3030/r150/
 - Setagaya (annual cap): https://www.city.setagaya.lg.jp/02060/33049.html
 - Machida (claim deadline): https://www.city.machida.tokyo.jp/kurashi/hoken/kokuho/ironnakyuufu/kougaku.html
