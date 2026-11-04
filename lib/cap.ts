@@ -34,7 +34,7 @@ export const SOURCES = [
   "https://www.city.setagaya.lg.jp/02060/33049.html",
   "https://www.city.machida.tokyo.jp/kurashi/hoken/kokuho/ironnakyuufu/kougaku.html",
   "https://www.city.fukuoka.lg.jp/hofuku/hokennenkin/hp/kokuminkenkouhoken/09-00.html",
-  "https://laws.e-gov.go.jp/law/315IO0000000243",
+  "https://laws.e-gov.go.jp/law/215IO0000000243",
 ];
 
 export type BandInfo = { id: Band; label: string; labelJa: string; annualIncome: string; smr: string; nhiIncome: string; taxable70: string; legacy: string };
