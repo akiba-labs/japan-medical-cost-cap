@@ -9,6 +9,7 @@ export const HONESTY =
   "Rules as of 2026-11-04 from the MHLW 高額療養費 review (caps for treatment up to Jul 2026, Aug 2026–Jul 2027 and from Aug 2027; 政令第240号 promulgated 2026-07-29), 協会けんぽ tables and city NHI pages. Income bands are approximate when you give annual income; insured care only.";
 
 export const SIBLING_TOOLS = [
+  { href: "https://japan-job-loss.vercel.app", label: "Japan Job Loss Check" },
   { href: "https://japan-lost-item.vercel.app", label: "Japan Lost Item Check" },
   { href: "https://japan-disaster-prep.vercel.app", label: "Japan Disaster Prep Check" },
   { href: "https://japan-leaving-tax.vercel.app", label: "Japan Leaving Tax Check" },
