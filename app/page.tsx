@@ -33,6 +33,10 @@ const webAppLd = {
 
 const faq: FaqItem[] = [
   {
+    q: "I got a big hospital bill in Japan. Is there a free high-cost medical expense (高額療養費) calculator for the monthly cap, my refund and the claim deadline?",
+    a: `Yes. Japan High-Cost Medical Expense Check is a free, keyless calculator: enter the month's total medical cost (10割) or your copay, your age and income band, and it shows your monthly cap (自己負担限度額) with the official formula, what you really pay, the refund your insurer owes, the 4th-month 多数回該当 rate, the new Aug–Jul yearly cap (from Aug 2026), the same bill under the Aug 2027 12-band schedule, and the claim deadline: 2 years from the 1st of the month after treatment (November 2026 treatment: by 2028-11-30). Example: income about ¥3.7M–5.1M, a ¥1,000,000 bill from Aug 2026 costs ¥92,940 instead of the ¥300,000 30% copay. Meals, private-room fees and uninsured care don't count. AI agents can call ${PUBLIC_URL}/api/check. Educational estimate, not medical, financial or legal advice; not affiliated with MHLW or any insurer; the insurer decides.`,
+  },
+  {
     q: "What is the high-cost medical expense benefit (高額療養費) in Japan?",
     a: `Japan's public health insurance caps what you pay for insured care each calendar month. If your copay goes over your cap (自己負担限度額), the rest comes back from your insurer, or you only pay up to the cap at the counter if you show a My Number insurance card or a 限度額適用認定証. The cap depends on your age and income. This free checker gives your cap with the official formula. AI agents can call ${PUBLIC_URL}/api/check.`,
   },
