@@ -39,3 +39,33 @@ Site: https://japan-medical-cost-cap.vercel.app
 - 協会けんぽ: https://www.kyoukaikenpo.or.jp/g3/sb3030/r150/
 - Setagaya (annual cap): https://www.city.setagaya.lg.jp/02060/33049.html
 - Machida (claim deadline): https://www.city.machida.tokyo.jp/kurashi/hoken/kokuho/ironnakyuufu/kougaku.html
+
+## Other free tools
+
+- Japan Lost Item Check (lost wallet, phone or residence card in Japan: who to contact, 遺失物法 hold periods, 14-day reissue): https://japan-lost-item.vercel.app
+- Japan Job Loss Check (ISA 14-day notice, 雇用保険, 任意継続/国保, pension after leaving a job): https://japan-job-loss.vercel.app
+- Japan Visa Renewal Window Check (在留期間更新 window, 特例期間, 2026-10 fees, PR card renewal): https://japan-visa-renewal.vercel.app
+- Japan JLPT Level Check (JLPT N1–N5 vs HSP points, 46号, Business Manager B2, SSW, PR B1): https://japan-jlpt-check.vercel.app
+- Japan Graduate Visa Check (留学 → work visa timing: 1 Dec–31 Jan for April starts, 継続就職活動 / 内定者 特定活動, part-time end, 14-day notice): https://japan-graduate-visa.vercel.app
+- Japan Disaster Prep Check (防災庁 emergency request: water, food, portable toilets, 旧耐震): https://japan-disaster-prep.vercel.app
+- Japan Leaving Tax Check (住民税 and 納税管理人 when leaving Japan): https://japan-leaving-tax.vercel.app
+- Japan Pet Quarantine Check (dogs and cats into / out of Japan, 180-day wait, 2027 export rule): https://japan-pet-quarantine.vercel.app
+- Japan Re-entry Deadline Check (last day to be back in Japan: deemed re-entry, re-entry permit, renewal-pending special period): https://japan-reentry-check.vercel.app
+- Japan Customs Allowance Checker (duty-free allowance on arrival, duty estimate, cash declaration): https://japan-customs-allowance.vercel.app
+- Japan Luggage Check (Shinkansen oversized-baggage rule + luggage forwarding cost): https://japan-luggage.vercel.app
+- Japan My Number Card Expiry Check (foreign residents' card ends with the period of stay): https://japan-mynumber-card-check.vercel.app
+- Japan Visa Fee Calculator (residence permit fees from 2026-10-01): https://japan-visa-fee.vercel.app
+- Japan PR Guideline Check (permanent residence guideline revised 2026-10-01): https://japan-pr-check.vercel.app
+- Japan HSP Points Calculator (Highly Skilled Professional visa points, 70 / 80): https://japan-hsp-points.vercel.app
+- Japan Overseas Dependents Check (国外居住親族 dependent deduction): https://japan-overseas-dependents.vercel.app
+- Japan Part-time Work Check (資格外活動許可, 28-hour rule): https://japan-parttime-check.vercel.app
+- Japan Driving Check (foreign licence, IDP, 外免切替): https://japan-driving-check.vercel.app
+- Japan International Postage 2027 (Japan Post prices now vs from 2027-02-01): https://japan-intl-postage.vercel.app
+- Japan Tax-Free Refund Checker (refund-method tax-free shopping from 2026-11-01): https://japan-tax-free-refund.vercel.app
+- Japan TB Screening Check (JPETS TB clearance for COE / visa): https://japan-tb-screening.vercel.app
+- Japan Alert Decoder (Japanese emergency alerts explained): https://japan-alert-decoder.vercel.app
+- Japan Dual Pricing Check (resident vs non-resident prices): https://japan-dual-pricing.vercel.app
+- Kyushu Travel Discount Calculator (九州ふっこう応援割): https://kyushu-travel-discount.vercel.app
+- House Rules Check (Airbnb house rules from 2026-11-20): https://house-rules-check.vercel.app
+- Japan Trip Brain (Japan trip planner): https://japan-trip-brain.vercel.app
+- Free Agent Tools MCP (all these tools as one MCP server): https://free-agent-tools.vercel.app
