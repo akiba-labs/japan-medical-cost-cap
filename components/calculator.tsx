@@ -4,6 +4,7 @@ import { useState } from "react";
 import { CardDisclaimer } from "@/components/card-disclaimer";
 import { ShareBar } from "@/components/share-bar";
 import { BANDS, BAND_INFO, type AgeGroup, type Band, type Setting } from "@/lib/cap";
+import { isGithubPages, pagesSiteUrl } from "@/lib/hosting";
 import { EXAMPLE_SHARED, PUBLIC_URL, resultPath, safeCheck, type Shared } from "@/lib/share";
 import { VERDICT_LABEL, VERDICT_STYLE } from "@/lib/verdict";
 
@@ -19,7 +20,7 @@ export function Calculator({ initial }: { initial?: Shared }) {
   const setAmount = (v: number | null) => setS((p) => (mode === "total" ? { ...p, totalCost: v, copay: null } : { ...p, copay: v, totalCost: null }));
   const bands = BANDS.filter((b) => !(s.ageGroup === "under70" && b === "nontaxable_low"));
   const r = safeCheck(s);
-  const shareUrl = `${PUBLIC_URL}${resultPath(s)}`;
+  const shareUrl = isGithubPages ? `${pagesSiteUrl(PUBLIC_URL)}/` : `${PUBLIC_URL}${resultPath(s)}`;
 
   return (
     <div className="grid gap-6 lg:grid-cols-[0.9fr_1.3fr]">
@@ -129,7 +130,10 @@ export function Calculator({ initial }: { initial?: Shared }) {
                 ))}
               </ol>
               <p className="mt-4 text-xs text-muted">Band: {r.band.label} ({r.band.labelJa}). {r.callCenter}.</p>
-              <div className="mt-6">
+              <div className="mt-6" data-testid="share-result">
+                {isGithubPages ? (
+                  <p className="mb-3 text-xs text-muted">Share the calculator. A link to this exact result returns when hosting is back.</p>
+                ) : null}
                 <ShareBar url={shareUrl} text={`Japan 高額療養費: ${r.summary}`} />
               </div>
             </>

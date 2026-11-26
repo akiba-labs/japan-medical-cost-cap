@@ -1,5 +1,7 @@
 import { ImageResponse } from "next/og";
 
+export const dynamic = "force-static";
+
 export const alt = "Japan High-Cost Medical Expense Check: your monthly medical cost cap, refund, yearly cap and the Aug 2027 change";
 export const size = { width: 1200, height: 630 };
 export const contentType = "image/png";

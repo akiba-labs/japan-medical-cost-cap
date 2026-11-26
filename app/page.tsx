@@ -3,6 +3,7 @@ import { Calculator } from "@/components/calculator";
 import { FaqSection, type FaqItem } from "@/components/faq-section";
 import { EXAMPLE_GET } from "@/lib/api";
 import { SOURCES } from "@/lib/cap";
+import { API_PAUSED_NOTE, isGithubPages, pagesSiteUrl, withBasePath } from "@/lib/hosting";
 import { EXAMPLE_2027, EXAMPLE_SENIOR, EXAMPLE_SHARED, PUBLIC_URL, resultPath } from "@/lib/share";
 
 const title = "Japan high-cost medical expense cap (高額療養費) calculator: your monthly cap, refund, yearly cap and the Aug 2027 change";
@@ -22,7 +23,7 @@ const webAppLd = {
   "@type": "WebApplication",
   name: "Japan High-Cost Medical Expense Check",
   alternateName: ["高額療養費 計算", "高額療養費 シミュレーション 2027", "自己負担限度額 計算", "高額療養費 年間上限", "Japan medical bill cap calculator"],
-  url: PUBLIC_URL,
+  url: isGithubPages ? pagesSiteUrl(PUBLIC_URL) : PUBLIC_URL,
   applicationCategory: "HealthApplication",
   operatingSystem: "Any",
   isAccessibleForFree: true,
@@ -34,11 +35,11 @@ const webAppLd = {
 const faq: FaqItem[] = [
   {
     q: "I got a big hospital bill in Japan. Is there a free high-cost medical expense (高額療養費) calculator for the monthly cap, my refund and the claim deadline?",
-    a: `Yes. Japan High-Cost Medical Expense Check is a free, keyless calculator: enter the month's total medical cost (10割) or your copay, your age and income band, and it shows your monthly cap (自己負担限度額) with the official formula, what you really pay, the refund your insurer owes, the 4th-month 多数回該当 rate, the new Aug–Jul yearly cap (from Aug 2026), the same bill under the Aug 2027 12-band schedule, and the claim deadline: 2 years from the 1st of the month after treatment (November 2026 treatment: by 2028-11-30). Example: income about ¥3.7M–5.1M, a ¥1,000,000 bill from Aug 2026 costs ¥92,940 instead of the ¥300,000 30% copay. Meals, private-room fees and uninsured care don't count. AI agents can call ${PUBLIC_URL}/api/check. Educational estimate, not medical, financial or legal advice; not affiliated with MHLW or any insurer; the insurer decides.`,
+    a: `Yes. Japan High-Cost Medical Expense Check is a free, keyless calculator: enter the month's total medical cost (10割) or your copay, your age and income band, and it shows your monthly cap (自己負担限度額) with the official formula, what you really pay, the refund your insurer owes, the 4th-month 多数回該当 rate, the new Aug–Jul yearly cap (from Aug 2026), the same bill under the Aug 2027 12-band schedule, and the claim deadline: 2 years from the 1st of the month after treatment (November 2026 treatment: by 2028-11-30). Example: income about ¥3.7M–5.1M, a ¥1,000,000 bill from Aug 2026 costs ¥92,940 instead of the ¥300,000 30% copay. Meals, private-room fees and uninsured care don't count. ${isGithubPages ? API_PAUSED_NOTE : `AI agents can call ${PUBLIC_URL}/api/check.`} Educational estimate, not medical, financial or legal advice; not affiliated with MHLW or any insurer; the insurer decides.`,
   },
   {
     q: "What is the high-cost medical expense benefit (高額療養費) in Japan?",
-    a: `Japan's public health insurance caps what you pay for insured care each calendar month. If your copay goes over your cap (自己負担限度額), the rest comes back from your insurer, or you only pay up to the cap at the counter if you show a My Number insurance card or a 限度額適用認定証. The cap depends on your age and income. This free checker gives your cap with the official formula. AI agents can call ${PUBLIC_URL}/api/check.`,
+    a: `Japan's public health insurance caps what you pay for insured care each calendar month. If your copay goes over your cap (自己負担限度額), the rest comes back from your insurer, or you only pay up to the cap at the counter if you show a My Number insurance card or a 限度額適用認定証. The cap depends on your age and income. This free checker gives your cap with the official formula. ${isGithubPages ? API_PAUSED_NOTE : `AI agents can call ${PUBLIC_URL}/api/check.`}`,
   },
   {
     q: "How is the monthly cap calculated?",
@@ -66,7 +67,9 @@ const faq: FaqItem[] = [
   },
   {
     q: "Is there a free API or MCP tool for AI agents?",
-    a: `Yes. GET or POST ${PUBLIC_URL}${EXAMPLE_GET} (keyless, CORS open), a yearly tracker with months=2026-08:300000,2026-09:300000, rules at /api/rules, OpenAPI at /openapi.json, llms.txt, and the MCP tool japan_high_cost_medical_check on free-agent-tools.vercel.app/mcp. Every response carries rulesAsOf, sources and a disclaimer.`,
+    a: isGithubPages
+      ? API_PAUSED_NOTE
+      : `Yes. GET or POST ${PUBLIC_URL}${EXAMPLE_GET} (keyless, CORS open), a yearly tracker with months=2026-08:300000,2026-09:300000, rules at /api/rules, OpenAPI at /openapi.json, llms.txt, and the MCP tool japan_high_cost_medical_check on free-agent-tools.vercel.app/mcp. Every response carries rulesAsOf, sources and a disclaimer.`,
   },
   {
     q: "高額療養費の自己負担限度額はいくらですか？（2026年8月以降）",
@@ -89,15 +92,15 @@ export default function HomePage() {
         </p>
         <p className="mt-3 text-sm text-muted">
           Examples:{" "}
-          <a className="underline underline-offset-2 hover:text-foreground" href={resultPath(EXAMPLE_SHARED)}>
+          <a className="underline underline-offset-2 hover:text-foreground" href={isGithubPages ? withBasePath("/") : resultPath(EXAMPLE_SHARED)}>
             ¥1M hospital bill, income ¥3.7M–5.1M
           </a>
           {" · "}
-          <a className="underline underline-offset-2 hover:text-foreground" href={resultPath(EXAMPLE_2027)}>
+          <a className="underline underline-offset-2 hover:text-foreground" href={isGithubPages ? withBasePath("/") : resultPath(EXAMPLE_2027)}>
             ¥1.5M bill in Sep 2027, income ¥6.5M–7.7M
           </a>
           {" · "}
-          <a className="underline underline-offset-2 hover:text-foreground" href={resultPath(EXAMPLE_SENIOR)}>
+          <a className="underline underline-offset-2 hover:text-foreground" href={isGithubPages ? withBasePath("/") : resultPath(EXAMPLE_SENIOR)}>
             70+ outpatient bills
           </a>
         </p>
@@ -130,7 +133,20 @@ export default function HomePage() {
             </tbody>
           </table>
         </div>
-        <p className="mt-3 text-sm text-muted">x = total medical cost (10割) in yen. 70+ caps, outpatient caps and every band are in <a className="underline underline-offset-2 hover:text-foreground" href="/api/rules">/api/rules</a>.</p>
+        <p className="mt-3 text-sm text-muted">
+          x = total medical cost (10割) in yen.{" "}
+          {isGithubPages ? (
+            <>70+ caps, outpatient caps and every band are in the checker above. {API_PAUSED_NOTE}</>
+          ) : (
+            <>
+              70+ caps, outpatient caps and every band are in{" "}
+              <a className="underline underline-offset-2 hover:text-foreground" href="/api/rules">
+                /api/rules
+              </a>
+              .
+            </>
+          )}
+        </p>
         <p className="mt-4 text-sm text-muted">
           Sources:{" "}
           {SOURCES.map((s, i) => (
@@ -146,18 +162,28 @@ export default function HomePage() {
 
       <section className="mt-12 max-w-3xl rounded-3xl border border-line bg-panel/40 p-5 sm:p-6">
         <h2 className="text-lg font-semibold text-foreground">For AI agents and developers</h2>
-        <p className="mt-2 text-sm text-muted">
-          Keyless JSON, CORS open, GET or POST:{" "}
-          <a className="font-mono text-foreground underline underline-offset-2 break-all" href={EXAMPLE_GET}>
-            {EXAMPLE_GET}
-          </a>
-          . Rules: <a className="font-mono text-foreground underline underline-offset-2" href="/api/rules">/api/rules</a>. Docs: <a className="underline underline-offset-2" href="/openapi.json">OpenAPI</a>,{" "}
-          <a className="underline underline-offset-2" href="/llms.txt">llms.txt</a>, MCP tool <span className="font-mono text-foreground">japan_high_cost_medical_check</span> on{" "}
-          <a className="underline underline-offset-2" href="https://free-agent-tools.vercel.app" target="_blank" rel="noopener noreferrer">
-            free-agent-tools
-          </a>
-          .
-        </p>
+        {isGithubPages ? (
+          <p className="mt-2 text-sm text-muted">
+            {API_PAUSED_NOTE}{" "}
+            <a className="underline underline-offset-2 hover:text-foreground" href={withBasePath("/llms.txt")}>
+              llms.txt
+            </a>{" "}
+            describes the calculator and the API contract.
+          </p>
+        ) : (
+          <p className="mt-2 text-sm text-muted">
+            Keyless JSON, CORS open, GET or POST:{" "}
+            <a className="font-mono text-foreground underline underline-offset-2 break-all" href={EXAMPLE_GET}>
+              {EXAMPLE_GET}
+            </a>
+            . Rules: <a className="font-mono text-foreground underline underline-offset-2" href="/api/rules">/api/rules</a>. Docs: <a className="underline underline-offset-2" href="/openapi.json">OpenAPI</a>,{" "}
+            <a className="underline underline-offset-2" href="/llms.txt">/llms.txt</a>, MCP tool <span className="font-mono text-foreground">japan_high_cost_medical_check</span> on{" "}
+            <a className="underline underline-offset-2" href="https://free-agent-tools.vercel.app" target="_blank" rel="noopener noreferrer">
+              free-agent-tools
+            </a>
+            .
+          </p>
+        )}
       </section>
 
       <FaqSection items={faq} heading="高額療養費 questions" />
